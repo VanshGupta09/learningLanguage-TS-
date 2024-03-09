@@ -5,7 +5,7 @@ import { ArrowBack, VolumeUp } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
 import { speakText, translateWord } from "../utils/fearure";
 import { useDispatch, useSelector } from "react-redux";
-import { getWordsFail, getWordsRequest, getWordsSuccess, saveResult, clearResult, } from "../redux/slices";
+import { getWordsFail, getWordsRequest, getWordsSuccess, clearResult, } from "../redux/slices";
 import Loading from "./Loading";
 
 const Learning = () => {
@@ -37,7 +37,7 @@ const Learning = () => {
   useEffect(() => {
     dispatch(getWordsRequest());
     translateWord(params || "hi")
-      .then((arr) => { arr?.map((elm) => dispatch(getWordsSuccess(arr))) })
+      .then((arr) => { arr?.map(() => dispatch(getWordsSuccess(arr))) })
       .catch((err) => { dispatch(getWordsFail(err)); })
 
     if (error) {
